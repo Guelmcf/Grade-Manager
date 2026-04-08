@@ -1,7 +1,7 @@
 export interface StudentFormData {
   name: string
-  attendance: string
-  grades: [
+  FormAttendance: string
+  Formgrades: [
     string, 
     string, 
     string, 
@@ -9,7 +9,6 @@ export interface StudentFormData {
     string
   ]
 }
-
 export interface Student {
   id: string
   name: string
