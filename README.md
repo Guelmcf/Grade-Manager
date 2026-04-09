@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# Grade Manager — Processo Seletivo dti digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de gestão de notas e frequência desenvolvido como parte do processo seletivo da dti digital.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Como executar
 
-## React Compiler
+**Pré-requisitos:** Node.js 18+
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Clonar o repositório
+git clone https://github.com/Guelmcf/Grade-Manager.git
 
-## Expanding the ESLint configuration
+# Entrar na pasta
+cd grade-manager
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Instalar dependências
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Rodar em modo desenvolvimento
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Acesse `http://localhost:5173` no navegador.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Funcionalidades
+
+- Cadastro de alunos com notas em 5 disciplinas (0–10) e frequência (0–100%)
+- Edição e exclusão de alunos
+- Cálculo automático da média individual de cada aluno
+- Cálculo automático da média da turma por disciplina
+- Identificação de alunos acima da média geral da turma
+- Identificação de alunos com frequência abaixo de 75%
+- Validação de todos os campos do formulário
+
+---
+
+## Estrutura do projeto
+
 ```
+src/
+├── types/
+│   └── index.ts          # Interfaces e tipos TypeScript
+├── utils/
+│   └── calculations.ts   # Funções puras de cálculo (sem efeitos colaterais)
+├── hooks/
+│   └── useStudents.ts    # Custom hook — estado e operações dos alunos
+├── components/
+│   ├── Header.tsx        # Cabecalho da pagina
+│   ├── StudentForm.tsx   # Formulário de cadastro/edição
+│   ├── StudentTable.tsx  # Tabela com todos os alunos e notas
+│   ├── StatsPanel.tsx    # Médias por disciplina e média geral
+│   ├── AlertPanel.tsx    # Alertas de média alta e frequência baixa
+│   └── footer.tsx        # footer da pagina com link pro git hub
+└── App.tsx               # Componente raiz — orquestra os demais
+```
+
+---
+
+## 🧠 Premissas assumidas
+
+- Não há requisito de persistência de dados — os dados vivem em memória durante a sessão
+- "Média da turma" é calculada como a média aritmética simples das notas de todos os alunos
+- A comparação "acima da média" usa a média geral de todos os alunos (não por disciplina)
+- Frequência é um valor percentual inserido manualmente pelo professor (não calculado por presença)
+- Nomes de alunos são únicos por convenção de uso, mas não há validação de duplicidade
+- O sistema é voltado para desktop, com responsividade básica para mobile
+
+---
+
+##  Decisões de projeto
+
+**TypeScript com tipos explícitos**
+Optei por definir interfaces claras em `types/index.ts` antes de escrever qualquer componente. Isso força um contrato de dados explícito e facilita a manutenção.
+
+**Funções puras separadas em `utils/`**
+Toda a lógica de cálculo (médias, filtros) vive em funções puras sem dependência de estado ou UI. Isso as torna previsíveis, fáceis de testar e reutilizáveis.
+
+**Custom hook `useStudents`**
+O estado e as operações sobre alunos foram extraídos para um hook dedicado, mantendo os componentes focados apenas na renderização. Isso separa responsabilidades de forma clara.
+
+**Sem biblioteca de formulário**
+Optei por validação manual para manter o código simples e demonstrar entendimento dos conceitos, sem adicionar dependências desnecessárias para um formulário de baixa complexidade.
+
+**Sem biblioteca de estado global**
+O volume de dados não justifica Redux ou Context API. O `useStudents` resolve o problema com `useState` simples e prop drilling controlado.
+
+---
+
+##  O que eu adicionaria com mais tempo
+
+- [ ] Testes unitários para as funções de `utils/calculations.ts` com Vitest
+- [ ] Persistência com `localStorage` para não perder dados ao recarregar
+- [ ] Importação de alunos via CSV
+- [ ] Gráfico de desempenho por disciplina (ex: Recharts)
+- [ ] Modo de edição inline na tabela
+- [ ] Ordenação da tabela por nome, média ou frequência
+- [ ] deploy do projeto
+
+---
+
+## Autor
+
+Miguel Figueiredo — Linkedin: (https://www.linkedin.com/in/miguel-figueiredo-2523092b6?utm_source=share_via&utm_content=profile&utm_medium=member_ios) · GitHub : (https://github.com/Guelmcf)
