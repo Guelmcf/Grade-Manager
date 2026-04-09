@@ -1,7 +1,7 @@
 export interface StudentFormData {
   name: string
-  FormAttendance: string
-  Formgrades: [
+  formAttendance: string
+  formGrades: [
     string, 
     string, 
     string, 
