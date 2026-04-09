@@ -3,6 +3,7 @@ import { useStudent } from './hooks/useStudent';
 import StudentForm from './components/studentsForms';
 import { StudentTable } from './components/studentsTable';
 import { StatsPanel } from './components/statsPanel';
+import { AlertPanel } from './components/alertPanel';
 
 
 export default function App() {
@@ -35,6 +36,9 @@ return (
       />
       <StatsPanel 
         students={students}      
+      />
+      <AlertPanel
+        students={students}
       />
   </div>
 )
