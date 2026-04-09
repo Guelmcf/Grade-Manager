@@ -19,6 +19,7 @@ const [formData, setFormData] = useState<StudentFormData>({
 })
 
 useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   if (editingStudentId) {
     const student = students.find(s => s.id === editingStudentId)
     if (student) {
@@ -31,7 +32,7 @@ useEffect(() => {
   } else {
     setFormData({ name: '', formAttendance: '', formGrades: ['','','','',''] })
   }
-}, [editingStudentId])
+}, [editingStudentId, students])
 
   return (
     <div>
