@@ -10,6 +10,7 @@ export interface StudentFormData {
   ]
 }
 export interface Student {
+  average: number
   id: string
   name: string
   attendance: number
