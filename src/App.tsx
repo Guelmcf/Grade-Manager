@@ -54,7 +54,7 @@ return (
       ) : (
       <p className="text-gray-600 mt-4 flex flex-col items-center text-center">
         <HiOutlineEmojiSad className="text-[75px] mb-5" />
-        Nenhum aluno cadastrado.Use o formulário acima para adicionar alunos.
+        Nenhum aluno cadastrado! Use o formulário acima para adicionar alunos.
       </p>
       )}
       </main>
