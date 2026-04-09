@@ -2,6 +2,7 @@ import './App.css'
 import { useStudent } from './hooks/useStudent';
 import StudentForm from './components/studentsForms';
 import { StudentTable } from './components/studentsTable';
+import { StatsPanel } from './components/statsPanel';
 
 
 export default function App() {
@@ -31,6 +32,9 @@ return (
         editingStudentId={editingStudentId}
         editStudent={editStudent}
         removeStudent={removeStudent}
+      />
+      <StatsPanel 
+        students={students}      
       />
   </div>
 )
