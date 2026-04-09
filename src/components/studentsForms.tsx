@@ -35,7 +35,7 @@ useEffect(() => {
 }, [editingStudentId, students])
 
   return (
-    <div>
+    <div className="mb-4 pt-30">
       <h1>Adicionar Aluno</h1>
       <form onSubmit={(e) => {
         e.preventDefault()

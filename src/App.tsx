@@ -4,6 +4,8 @@ import StudentForm from './components/studentsForms';
 import { StudentTable } from './components/studentsTable';
 import { StatsPanel } from './components/statsPanel';
 import { AlertPanel } from './components/alertPanel';
+import { Header } from './components/header';
+import { Footer } from './components/footer';
 
 
 export default function App() {
@@ -18,9 +20,11 @@ const {
   editStudent
 } = useStudent()
 
-
 return (
   <div>
+      <Header 
+      students={students}
+      />
       <StudentForm
         students={students}
         editingStudentId={editingStudentId}
@@ -40,6 +44,7 @@ return (
       <AlertPanel
         students={students}
       />
+      <Footer />
   </div>
 )
 }
