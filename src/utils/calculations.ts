@@ -19,4 +19,11 @@ function studentsBelowAttendance(students: Student[], threshold: number): Studen
   return students.filter(student => student.attendance < threshold);
 }
 
+export const parseStudentFormData = (formGrades: string[]) => {
+  const numericGrades = formGrades.map(g => parseFloat(g) || 0) as [number, number, number, number, number];
+  const average = numericGrades.reduce((acc, g) => acc + g, 0) / numericGrades.length;
+  
+  return { numericGrades, average };
+};
+
 export { calculateAverage, calculateClassAverage, studentsAboveClassAverage, studentsBelowAttendance };

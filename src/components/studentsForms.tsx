@@ -130,6 +130,7 @@ useEffect(() => {
         min={0}
         max={100}
         step={1}
+        placeholder='Ex: 85'
         />
         {errors.formAttendance && <p className="text-red-500 text-sm">{errors.formAttendance}</p>}
         <button type="submit"
