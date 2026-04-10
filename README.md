@@ -13,7 +13,7 @@ Sistema de gestão de notas e frequência desenvolvido como parte do processo se
 git clone https://github.com/Guelmcf/Grade-Manager.git
 
 # Entrar na pasta
-cd grade-manager
+cd Grade-Manager
 
 # Instalar dependências
 npm install
