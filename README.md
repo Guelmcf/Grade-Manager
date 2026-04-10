@@ -38,6 +38,16 @@ Acesse `http://localhost:5173` no navegador.
 
 ---
 
+##  Tecnologias
+
+- [React 18](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
 ## Estrutura do projeto
 
 ```
