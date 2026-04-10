@@ -60,7 +60,7 @@ src/
 
 ---
 
-## 🧠 Premissas assumidas
+##  Premissas assumidas
 
 - Não há requisito de persistência de dados — os dados vivem em memória durante a sessão
 - "Média da turma" é calculada como a média aritmética simples das notas de todos os alunos
