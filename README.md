@@ -49,6 +49,12 @@ Acesse `http://localhost:5173` no navegador.
 
 ---
 
+## Demo
+
+![dtiTestGif](https://github.com/user-attachments/assets/7eb755b6-08d9-45c7-be89-dadd01ae276d)
+
+---
+
 ## Estrutura do projeto
 
 ```
