@@ -30,6 +30,7 @@ Acesse `http://localhost:5173` no navegador.
 
 - Cadastro de alunos com notas em 5 disciplinas (0–10) e frequência (0–100%)
 - Edição e exclusão de alunos
+- Persistência automática de dados no LocalStorage
 - Cálculo automático da média individual de cada aluno
 - Cálculo automático da média da turma por disciplina
 - Identificação de alunos acima da média geral da turma
@@ -72,7 +73,7 @@ src/
 
 ##  Premissas assumidas
 
-- Não há requisito de persistência de dados — os dados vivem em memória durante a sessão
+- Os dados são persistidos localmente no navegador via LocalStorage, garantindo que não sejam perdidos ao recarregar a página.
 - "Média da turma" é calculada como a média aritmética simples das notas de todos os alunos
 - A comparação "acima da média" usa a média geral de todos os alunos (não por disciplina)
 - Frequência é um valor percentual inserido manualmente pelo professor (não calculado por presença)
@@ -103,7 +104,6 @@ O volume de dados não justifica Redux ou Context API. O `useStudents` resolve o
 ##  O que eu adicionaria com mais tempo
 
 - [ ] Testes unitários para as funções de `utils/calculations.ts` com Vitest
-- [ ] Persistência com `localStorage` para não perder dados ao recarregar
 - [ ] Importação de alunos via CSV
 - [ ] Gráfico de desempenho por disciplina (ex: Recharts)
 - [ ] Modo de edição inline na tabela
